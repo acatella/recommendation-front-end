@@ -1,0 +1,35 @@
+header {
+    text-align: center;
+}
+
+.movie img {
+    width: 100%;
+}
+
+.row.movies {
+    overflow-x: scroll;
+    flex-wrap:nowrap;
+}
+
+
+.starRatings {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.starRatings .starRating {    
+    display: block;
+    overflow: hidden;
+}
+
+.starRatings .starRating img {
+    display:inline-block;
+    width: 30px;
+}
+.excellentRating { width: 100px; }
+.goodRating { width: 80px; }
+.averageRating { width: 60px; }
+.poorRating { width: 40px; }
+.terribleRating { width: 20px; } 

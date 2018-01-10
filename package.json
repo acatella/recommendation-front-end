@@ -1,0 +1,96 @@
+{
+  "name": "recommendation-front-end",
+  "version": "1.0.0",
+  "description": "Afi Catellani's term project front end",
+  "main": "src/index.js",
+  "scripts": {
+    "console": "node src/console.js",
+    "start": "webpack-dev-server --open --env development",
+    "test": "jest --watch --notify",
+    "lint": "eslint src/",
+    "clean": "rm -rf dist/*",
+    "compile": "webpack -p --env production",
+    "build": "npm run clean && npm run compile",
+    "deploy": "npm run build && surge dist/ --domain $npm_package_name.surge.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acatella/recommendation-front-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acatella/recommendation-front-end/issues"
+  },
+  "homepage": "https://github.com/acatella/recommendation-front-end#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "file-loader": "^1.1.6",
+    "html-loader": "^0.5.4",
+    "html-webpack-plugin": "^2.30.1",
+    "jest-cli": "^22.0.5",
+    "jquery": "^3.2.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.1"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es6": true,
+      "node": true,
+      "jest": true,
+      "browser": true
+    },
+    "parserOptions": {
+      "ecmaFeatures": {
+        "impliedStrict": true
+      }
+    },
+    "rules": {
+      "indent": [
+        2,
+        2
+      ],
+      "no-tabs": 2,
+      "no-trailing-spaces": 2,
+      "eol-last": 2,
+      "quotes": 2,
+      "semi": 2,
+      "curly": 2,
+      "no-magic-numbers": [
+        2,
+        {
+          "ignore": [
+            0,
+            1
+          ]
+        }
+      ],
+      "key-spacing": 2,
+      "no-whitespace-before-property": 2,
+      "padding-line-between-statements": 2,
+      "object-curly-spacing": 2,
+      "space-before-blocks": 2,
+      "space-before-function-paren": 2,
+      "space-in-parens": 2,
+      "space-infix-ops": 2,
+      "space-unary-ops": 2,
+      "arrow-spacing": 2,
+      "spaced-comment": 2,
+      "block-spacing": 2
+    }
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
