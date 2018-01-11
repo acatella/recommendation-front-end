@@ -2,6 +2,11 @@ header {
     text-align: center;
 }
 
+.movie {
+    min-width: 200px;
+    max-width: 300px;
+}
+
 .movie img {
     width: 100%;
 }
