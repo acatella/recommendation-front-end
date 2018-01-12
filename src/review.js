@@ -1,18 +1,15 @@
 const $ = require('jquery');
-const totalStars = 5;
+const Movie = require('./movie').default;
 const getRatingElement = require('./getRatingElement').default;
+const totalStars = 5;
 
-class Movie {
+class Review extends Movie {
     constructor(title, posterUrl, rating, imdbId, currentUser) {
-        this.title = title;
-        this.rating = Math.floor(rating);
-        this.posterUrl = posterUrl;
-        this.imdbId = imdbId;
-        this.currentUser = currentUser;
+        super(title, posterUrl, rating, imdbId, currentUser);
     }
 
     getElement() {
-        let movieContainer = $("<div id='movie-" + this.imdbId + "'></div>").addClass("col-3 movie");
+        let movieContainer = $("<div id='review-" + this.imdbId + "'></div>").addClass("col-3 movie");
         let titleEl = $("<h4></h4>").text(this.title);
         let posterEl = $("<img>");
         posterEl.attr('src', this.posterUrl);
@@ -25,15 +22,16 @@ class Movie {
             selectBox.append($option);
         }
         let saveButton = $("<button data-imdbId='" + this.imdbId + "' class='save-review'>Save Review</button>");        
+        let deleteButton = $("<button data-imdbId='" + this.imdbId + "' class='delete-review'>Delete Review</button>");
         movieContainer.append(titleEl);
         movieContainer.append(posterEl);
         movieContainer.append(ratingEl);
         movieContainer.append(selectBox);
         movieContainer.append(saveButton);
+        movieContainer.append(deleteButton);
 
         return movieContainer;
     }
-    
 }
 
-export default Movie;
+export default Review;
