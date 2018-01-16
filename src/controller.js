@@ -28,6 +28,12 @@ constants for [] of current recos and reviews
     });
 }
 
+/**
+ * Class that controls the operation of the page. 
+ * Contains all functions needed for fetching, updating, and rendering data.
+ * Data manipulation is handled by calling the provided Model class.
+ * View updating is handled by calling the provided View class.
+ */
  class Controller {
      constructor(model = new Model(), view = new View()) {
          this.model = model;
@@ -238,8 +244,7 @@ constants for [] of current recos and reviews
             let $select = $("#" + imdbId + "-select");      
             
             button.on('click', function(el) {                        
-                let $element = $("#movie-" + imdbId);
-                console.log('click!', $element);
+                let $element = $("#movie-" + imdbId);                
                 let rating = $select.find("option:selected").data("rating");
                 let newReview = new Review(title, posterUrl, rating, imdbId, "aficlark");
                 modelFn(imdbId, rating)                            
@@ -263,8 +268,7 @@ constants for [] of current recos and reviews
                 let $select = $("#" + imdbId + "-select");      
                 let rating = $select.find("option:selected").data("rating");
                 let newReview = new Review(title, posterUrl, rating, imdbId, "aficlark");
-                modelFn(imdbId, rating)   
-                console.log("model update method called for", imdbId, rating);
+                modelFn(imdbId, rating)                   
                 viewFn(newReview);          
                 $element.remove();      
             });
@@ -319,7 +323,7 @@ constants for [] of current recos and reviews
 
      addNewReview(review) {         
          let currentReviews = this.model.getCurrentReviews();         
-         currentReviews.push(review);
+         currentReviews.unshift(review);
          this.model.setCurrentReviews(currentReviews);
          this.view.renderReviews(currentReviews);
          this.attachReviewHandlersToRecommendations(this.model.reviewMovie, this.addNewReview);
@@ -350,8 +354,7 @@ constants for [] of current recos and reviews
      }
 
      attachGetMoviesHandler(modelFn) {
-         let $submitButton = $("#searchGenre");
-         console.log($submitButton);
+         let $submitButton = $("#searchGenre");         
          $submitButton.off('click');
          $submitButton.on('click', function(el) {
             let $select = $("#selectGenre");

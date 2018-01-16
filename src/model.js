@@ -59,6 +59,10 @@ const attachKeysToRecommendationRequest = (requestString, keys) => {
     return requestString;
 }
 
+/**
+ * Handles fetching and sending data to/from the server.
+ * Data is passed up to a controller to update the View.
+ */
 class Model {
     constructor(userLogin = defaultUserLogin) {
         this.userLogin = userLogin;
@@ -123,12 +127,9 @@ class Model {
         }        
         $.get(reviewsApiUrl + requestInfo, null, function(response, status) {
             
-        }).done(function(response) {
-            console.log("response is:", response);
-            let currentReviews = successFn(response);
-            console.log("returned reviews:", currentReviews);
-            reviewState.reviews = currentReviews;
-            console.log(reviewState);
+        }).done(function(response) {            
+            let currentReviews = successFn(response);            
+            reviewState.reviews = currentReviews;            
         });        
         loadingFn();        
     }
@@ -138,8 +139,7 @@ class Model {
         let imdbKey = reviewState.pageKeys[reviewState.nextPageNumber - 2].startingImdbId;
         if (imdbKey !== "") {
             requestInfo += "&lastEvaluatedImdbId=" + imdbKey;
-        }
-        console.log(requestInfo);
+        }        
         $.get(reviewsApiUrl + requestInfo, null, function(response, status) {
             
         }).done(function(response) {            
@@ -269,11 +269,8 @@ class Model {
         return false;
     }
 
-    getGenreOptions() {
-        console.log(recommendationState.favoriteGenre);
-        console.log(moviesToReviewState.genres);
-        let filteredGenres = moviesToReviewState.genres.filter(genre => genre != recommendationState.favoriteGenre);
-        console.log("filtered:", filteredGenres);
+    getGenreOptions() {        
+        let filteredGenres = moviesToReviewState.genres.filter(genre => genre != recommendationState.favoriteGenre);        
 
         return filteredGenres;
     }

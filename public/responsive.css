@@ -6,7 +6,67 @@
         border:  2px solid #29bf89;        
     }
 
+    nav .nav-link:hover {
+        border: 2px solid #0083bb;
+    }
+
     header {
         border: none;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
     }
 }
+
+@media screen and (max-width: 875px) {
+    .recommendations .movie .rating-select,
+    .recommendations .movie .save-review {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    body .recommendations .movie {
+        padding-bottom: 130px;
+    }
+
+    .movies-to-review button.search-button {
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 1040px) {
+    .recommendations .rating-select,
+    .recommendations .save-review {
+        width: initial;
+    }
+
+    .recommendations {
+        min-height: 520px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .recommendations .movie .rating-select,
+    .recommendations .movie .save-review {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .recommendations .movie {
+        padding-bottom: 100px;
+    }
+}
+
+@media only screen and (max-width: 1170px) {
+    .reviews .update-review,
+    .reviews .delete-review,
+    .reviews .rating-select {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .reviews .movie {
+        padding-bottom: 200px;
+    }
+}
+

@@ -2,6 +2,9 @@ const $ = require('jquery');
 const RecommendationPaginationButton = require('./paginationButton').default;
 const ReviewPaginationButton = require('./reviewPaginationButton').default;
 
+/**
+ * Handles rendering the state of the application.
+ */
 class View {
     constructor() {}
     
