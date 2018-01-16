@@ -1,0 +1,12 @@
+@media screen and (max-width: 740px) {
+    nav .nav-link {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+        border:  2px solid #29bf89;        
+    }
+
+    header {
+        border: none;
+    }
+}

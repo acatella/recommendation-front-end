@@ -7,7 +7,7 @@ const totalStars = 5;
 const getRatingElement = (rating) => {
     let $ol = $("<ol></ol>").addClass("starRatings");
     let $li = $("<li class='starRating'></li>");
-    $li.attr('data-rating', rating);
+    $li.attr('data-rating', rating);    
     let remainingStars = rating;
     for (let i = 0; i < totalStars; i++) {
         let star = $("<img>");

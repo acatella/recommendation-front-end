@@ -16,20 +16,28 @@ class Movie {
         let titleEl = $("<h4></h4>").text(this.title);
         let posterEl = $("<img>");
         posterEl.attr('src', this.posterUrl);
+        let ratingContainer = $("<div class='rating-container'></div>");
         let ratingEl = getRatingElement(this.rating);
-        let reviewEl = $("<div class='user-review'></div>");        
+        let ratingTitle = $("<span>IMBD Rating</span>");
+        ratingContainer.append(ratingTitle);
+        ratingContainer.append(ratingEl);
+        let reviewEl = $("<div class='user-review'></div>");     
+        let selectContainer = $("<div class='select-container'></div>");
         let selectBox = $("<select id='" + this.imdbId + "-select' class='rating-select'></select>");
         for (let i = 1; i <= totalStars; i++) {
             let $option = $("<option data-rating=" + i + "></option>");
             $option.text(i + " Star");
             selectBox.append($option);
-        }
-        let saveButton = $("<button data-imdbId='" + this.imdbId + "' class='save-review'>Save Review</button>");        
+        }        
+        let saveButton = $("<button data-imdbId='" + this.imdbId + "' class='save-review'>Save Review</button>");                
+        saveButton.data('poster-url', this.posterUrl); 
+        saveButton.data('title', this.title);
+        selectContainer.append(selectBox);
+        selectContainer.append(saveButton);
         movieContainer.append(titleEl);
         movieContainer.append(posterEl);
-        movieContainer.append(ratingEl);
-        movieContainer.append(selectBox);
-        movieContainer.append(saveButton);
+        movieContainer.append(ratingContainer);
+        movieContainer.append(selectContainer);        
 
         return movieContainer;
     }

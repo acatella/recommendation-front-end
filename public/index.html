@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
   <link href="style.css" rel="stylesheet">
+  <link href="responsive.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
   <title>Movie Recommendations</title>
 </head>
 <body>
@@ -16,14 +18,38 @@
             <h1>Yet Another Movie Recommendation Service</h1>    
         </div>
       </div>    
+      <nav>
+        <div class="page-description">
+          Welcome! This page recommends movies based on your favorite genre. Your favorite genre is determined by reviews you've made in the past, so go ahead and review some recommended movies you've seen, edit reviews you've made in the past, or search for other movies to review by genre.
+          Not finding the movie you're looking for? This site only displays movies with at least 15,000 reviews on IMDB, released after the year 1985, that are 80 minutes or longer.
+        </div>
+        <button id="refreshRecommendations" class="nav-link">Refresh Recommendations</button>
+        <a href="#reviews" class="nav-link">Your Reviews</a>
+        <a href="#movies" class="nav-link">Review Movies</a>
+      </nav>
     </header>
-    <main>
-      <div id="recos" class="row movies">
-        
+    <main>      
+      <div class="recommendations">
+          <h2>Recommendations for you:</h2>
+          <h5 id="favoriteGenre"></h5>
+          <div id="recos" class="row movies"></div>      
       </div>
-      <div id="reviews" class="row movies"></div>
-    </main>
-    <div><a href="/about/">About</a></div>
+      
+      <div class="reviews">
+          <h2>Your reviews:</h2>
+          <div id="reviews" class="row movies"></div>  
+      </div>
+            
+      <div class="movies-to-review recommendations">
+          <h2>Find movies to review:</h2>          
+          <div class="search-bar">
+              <span>Genre:</span>
+              <select id="selectGenre"></select>
+              <button id="searchGenre" class="search-button">Get Movies</button>
+          </div>
+          <div id="movies" class="row movies-to-review"></div>
+      </div>      
+    </main>    
   </section>
 </body>
 </html>

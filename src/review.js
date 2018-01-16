@@ -9,11 +9,15 @@ class Review extends Movie {
     }
 
     getElement() {
-        let movieContainer = $("<div id='review-" + this.imdbId + "'></div>").addClass("col-3 movie");
+        let movieContainer = $("<div id='movie-" + this.imdbId + "'></div>").addClass("col-3 movie");
         let titleEl = $("<h4></h4>").text(this.title);
         let posterEl = $("<img>");
         posterEl.attr('src', this.posterUrl);
+        let ratingContainer = $("<div class='rating-container'></div>");
         let ratingEl = getRatingElement(this.rating);
+        let ratingTitle = $("<span>Your Rating</span>");
+        ratingContainer.append(ratingTitle);
+        ratingContainer.append(ratingEl);
         let reviewEl = $("<div class='user-review'></div>");        
         let selectBox = $("<select id='" + this.imdbId + "-select' class='rating-select'></select>");
         for (let i = 1; i <= totalStars; i++) {
@@ -21,14 +25,22 @@ class Review extends Movie {
             $option.text(i + " Star");
             selectBox.append($option);
         }
-        let saveButton = $("<button data-imdbId='" + this.imdbId + "' class='save-review'>Save Review</button>");        
-        let deleteButton = $("<button data-imdbId='" + this.imdbId + "' class='delete-review'>Delete Review</button>");
+        let saveButton = $("<button data-imdbid='" + this.imdbId + "' class='update-review'>Save Review</button>");                
+        saveButton.data('poster-url', this.posterUrl); 
+        saveButton.data('title', this.title);
+        let deleteButton = $("<button data-imdbid='" + this.imdbId + "' class='delete-review'>Delete Review</button>");
+        let selectContainer = $("<div class='select-container'></div>");
+        let selectTitle = $("<span>Update Review</span>");
+        selectContainer.append(selectTitle);
+        selectContainer.append($("<br>"));
+        selectContainer.append(selectBox);
+        selectContainer.append(saveButton);
+        selectContainer.append(deleteButton);
         movieContainer.append(titleEl);
         movieContainer.append(posterEl);
-        movieContainer.append(ratingEl);
-        movieContainer.append(selectBox);
-        movieContainer.append(saveButton);
-        movieContainer.append(deleteButton);
+        movieContainer.append(ratingContainer);
+
+        movieContainer.append(selectContainer);
 
         return movieContainer;
     }
